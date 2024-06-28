@@ -1,16 +1,22 @@
 package org.example.dajava.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class DiaDiem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer MaDiaDiem;
+    @NotBlank(message = "Tên địa điểm là bắt buộc")
+    @Column(unique = true)
     private String TenDiaDiem;
-
-    // Getters and Setters
 }
