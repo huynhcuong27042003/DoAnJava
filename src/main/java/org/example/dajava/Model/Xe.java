@@ -26,7 +26,6 @@ public class Xe {
     private String moTa;
     private boolean trangThai;
     private boolean hide;
-    private String email;
     private String hinhAnh1;
     private String hinhAnh2;
     private String hinhAnh3;

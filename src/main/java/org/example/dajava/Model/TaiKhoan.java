@@ -35,7 +35,6 @@ public class TaiKhoan {
     @Pattern(regexp = "^\\d{12}$", message = "GPLX phải đủ 12 ký tự và luôn là chữ số")
     private String GPLX;
     private String Avarta;
-    private int IDChucVu;
 
     @ManyToOne
     @JoinColumn(name = "idChucVu", nullable = false)
