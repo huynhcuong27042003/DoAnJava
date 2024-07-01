@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -19,4 +21,6 @@ public class DiaDiem {
     @NotBlank(message = "Tên địa điểm là bắt buộc")
     @Column(unique = true)
     private String TenDiaDiem;
+    @OneToMany(mappedBy = "diaDiem")
+    private List<Xe> xes;
 }

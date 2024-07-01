@@ -1,6 +1,7 @@
 package org.example.dajava.Model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -25,9 +26,11 @@ public class DanhGia {
     private String NhanXet;
 
     @ManyToOne
+    @JoinColumn(name = "bienSoXe", nullable = false)
     private Xe xe;
 
     @ManyToOne
+    @JoinColumn(name = "email", nullable = false)
     private TaiKhoan taiKhoan;
 
     // Getters and Setters

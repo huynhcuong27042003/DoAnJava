@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -19,6 +21,8 @@ public class PhuongThucThanhToan {
     @NotBlank(message = "Tên là bắt buộc")
     @Column(unique = true)
     private String TenPhuongThuc;
+    @OneToMany(mappedBy = "phuongThucThanhToan")
+    private List<HoaDon> hoaDons;
 
     // Getters and Setters
 }

@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -19,6 +21,8 @@ public class LoaiXe {
     @NotBlank(message = "Tên loại xe là bắt buộc")
     @Column(unique = true)
     private String TenLoai;
+    @OneToMany(mappedBy = "loaiXe")
+    private List<Xe> xes;
 
     // Getters and Setters
 }

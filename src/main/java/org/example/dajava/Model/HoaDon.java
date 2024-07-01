@@ -1,10 +1,6 @@
 package org.example.dajava.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,17 +21,19 @@ public class HoaDon {
     private LocalDateTime NgayLap;
     private BigDecimal TongDonGia;
     private BigDecimal TienCoc;
-    private Integer MaPhuongThuc;
-    private String Email;
-    private String BienSoXe;
-    private Integer MaYeuCau;
-
     @ManyToOne
+    @JoinColumn(name = "maPhuongThuc", nullable = false)
     private PhuongThucThanhToan phuongThucThanhToan;
 
     @ManyToOne
+    @JoinColumn(name = "maYeuCau", nullable = false)
+    private YeuCauDatXe yeuCauDatXe;
+
+    @ManyToOne
+    @JoinColumn(name = "email", nullable = false)
     private TaiKhoan taiKhoan;
 
     @ManyToOne
-    private YeuCauDatXe yeuCauDatXe;
+    @JoinColumn(name = "bienSoXe", nullable = false)
+    private Xe xe;
 }

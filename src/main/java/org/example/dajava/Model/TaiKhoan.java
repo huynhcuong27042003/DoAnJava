@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Setter
@@ -34,10 +35,17 @@ public class TaiKhoan {
     @Pattern(regexp = "^\\d{12}$", message = "GPLX phải đủ 12 ký tự và luôn là chữ số")
     private String GPLX;
     private String Avarta;
-    private Integer IDChucVu;
+    private int IDChucVu;
 
     @ManyToOne
+    @JoinColumn(name = "idChucVu", nullable = false)
     private ChucVu chucVu;
+
+    @OneToMany(mappedBy = "taiKhoan")
+    private List<Xe> xes;
+
+    @OneToMany(mappedBy = "taiKhoan")
+    private List<YeuCauDatXe> yeuCauDatXes;
     @PrePersist
     @PreUpdate
     private void validateAge() {
