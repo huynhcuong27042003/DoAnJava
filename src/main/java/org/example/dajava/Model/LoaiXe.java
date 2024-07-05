@@ -23,6 +23,4 @@ public class LoaiXe {
     private String TenLoai;
     @OneToMany(mappedBy = "loaiXe")
     private List<Xe> xes;
-
-    // Getters and Setters
 }
