@@ -1,17 +1,3 @@
-/*  Register Modal */
-.modal {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.modal.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Calendar Modal */
-/*Calendar Modal*/
 @keyframes modalOpen {
     from {
         opacity: 0;
@@ -36,11 +22,11 @@
     }
 }
 
-.modal-open {
+.calendar-modal-open {
     animation: modalOpen 0.5s ease-in-out;
 }
 
-.modal-close {
+.calendar-modal-close {
     animation: modalClose 0.3s ease-in;
 }
 
@@ -74,7 +60,7 @@
     background-color: #6fcfb7;
 }
 
-.modal-content {
+.calendar-modal-content {
     max-height: 80vh;
     /* Set a maximum height for the modal content */
     display: flex;
@@ -116,101 +102,4 @@
     background-color: #e2e8f0;
     cursor: not-allowed;
     pointer-events: none;
-}
-/* Slide voucher */
-.slider-container {
-    display: flex;
-    overflow: hidden;
-}
-
-.slider-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slider-item {
-    flex: 0 0 33.33%;
-    /* 100% / 3 */
-}
-
-/*Footer*/
-.container{
-    margin: 0 auto;
-    max-width: 1280px;
-    position: relative;
-}
-.col-third{
-    width: calc(100%/3);
-}
-#footer{
-    border-top: 1px solid #ccc ;
-    padding: 48px 0;
-}
-
-.footer__about{
-    display: flex;
-}
-
-
-.footer__infor{
-    display: flex;
-    flex-direction: column;
-    margin-right: 150px;
-}
-
-.footer__logo {
-    margin-bottom: 32px;
-}
-
-
-.footer__logo img{
-    width: 260px;
-}
-
-.footer__contact{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    font-size: 16px;
-}
-
-.footer__contact p.main{
-    color: #000;
-}
-
-.footer__contact  p{
-    color: #6f6f6f;
-}
-
-.footer__social {
-    margin-top: 32px;
-}
-
-.footer__social a{
-    border: 1px solid #ccc;
-    padding: 10px 10px;
-    border-radius: 100%;
-    margin-right: 12px;
-}
-
-.footer__social a i{
-    color: #6f6f6f;
-    font-weight: 300;
-}
-
-.footer__part{
-    display: flex;
-    width: 100%;
-    gap: 20px;
-    justify-content: space-between;
-}
-
-.footer__part .item{
-}
-
-.footer__part .item__name{
-    margin-bottom: 32px;
-    font-weight: 700;
-    color: #242420;
-    font-size: 1rem;
 }

@@ -52,6 +52,10 @@ public class TaiKhoanService implements UserDetailsService {
 
     }
 
+    public TaiKhoan findTKByEmail(String email) {
+        return taiKhoanReponsitory.findTKByEmail(email);
+    }
+
     public Optional<TaiKhoan> findByEmail(String email) throws UsernameNotFoundException {
         return taiKhoanReponsitory.findByEmail(email);
     }

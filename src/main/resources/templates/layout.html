@@ -20,20 +20,51 @@
             <img src="/images/logo_new.png" class="h-full" loading="lazy" alt="Web đặt xe của tui">
         </a>
         <!--Options-->
-        <div sec:authorize="isAuthenticated()" class="flex items-center justify-around w-5/12">
-            <div>option 1</div>
-            <div>option 2</div>
-            <div>option 3</div>
-            <div>option 4</div>
+        <div sec:authorize="isAuthenticated()" class="flex items-center justify-between w-3/5">
+            <div class="text-lg font-light">option 1</div>
+            <div class="text-lg font-light">option 2</div>
             <!--Vertical line-->
             <div class="w-px h-6 mx-4 bg-slate-300"></div>
             <div sec:authorize="isAuthenticated()">
-                <span>Chào, <span sec:authentication="name"></span></span>
-                <form th:action="@{/logout}" method="post">
-                    <button type="submit" class="px-2 py-2 font-medium bg-white border border-black rounded-full hover:bg-red-100">
-                        Đăng xuất
+                <div class="relative inline-block text-left">
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                            class="inline-flex items-center px-5 text-lg font-normal text-center bg-white rounded-lg text-nowrap"
+                            type="button"><span>Chào, <span sec:authentication="name"></span></span><svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 1 4 4 4-4" />
+                    </svg>
                     </button>
-                </form>
+                    <div id="dropdown"
+                         class="absolute z-10 hidden w-auto mt-3 bg-white divide-y divide-gray-100 rounded-lg shadow left-24">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownDefaultButton">
+                            <li>
+                                <a herf="#"
+                                   class="block px-4 py-2 text-black hover:bg-gray-100 dark:hover:bg-gray-300">Chỉnh
+                                    sửa thông tin</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   class="block px-4 py-2 text-black hover:bg-gray-100 dark:hover:bg-gray-300">Xe
+                                    của bạn</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   class="block px-4 py-2 text-black hover:bg-gray-100 dark:hover:bg-gray-300">Xe
+                                    bạn đã thuê</a>
+                            </li>
+                            <div class="w-full h-px bg-slate-300"></div>
+                            <li>
+                                <form th:action="@{/logout}" method="post">
+                                    <button type="submit" class="block px-4 py-2 mt-2 text-black hover:bg-gray-100 dark:hover:bg-gray-300">
+                                        Đăng xuất
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div sec:authorize="!isAuthenticated()" class="flex items-center justify-around w-5/12">
@@ -150,7 +181,6 @@
     </div>
 </div>
 <section class="2xl:container" layout:fragment="content">
-
 </section>
 <div id="footer">
     <div class="container">
@@ -217,4 +247,6 @@
 <script src="/js/index/changeModal.js"></script>
 <script src="/js/index/getDays.js"></script>
 <script src="/js/index/calendar.js"></script>
+<script src="/js/index/slide.js"></script>
+<script src="/js/index/dropdown.js"></script>
 </html>
