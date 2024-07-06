@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -36,17 +37,16 @@ public class KhuyenMai {
     private String HinhAnhKhuyenMai;
 
     @NotNull(message = "Ngày khuyến mãi là bắt buộc")
-    private Date NgayKhuyenMai;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate NgayKhuyenMai;
 
     @NotNull(message = "Ngày kết thúc là bắt buộc")
     @Future(message = "Ngày kết thúc phải lớn hơn ngày hiện tại")
-    private Date NgayKetThuc;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate NgayKetThuc;
 
-    @PrePersist
-    @PreUpdate
-    private void validateDates() {
-        if (NgayKhuyenMai != null && NgayKetThuc != null && !NgayKetThuc.after(NgayKhuyenMai)) {
-            throw new IllegalArgumentException("Ngày kết thúc phải lớn hơn ngày khuyến mãi");
-        }
+    @AssertTrue(message = "Ngày khuyến mãi phải trước ngày kết thúc")
+    public boolean isNgayKhuyenMaiBeforeNgayKetThuc() {
+        return NgayKhuyenMai != null && NgayKetThuc != null && NgayKhuyenMai.isBefore(NgayKetThuc);
     }
 }

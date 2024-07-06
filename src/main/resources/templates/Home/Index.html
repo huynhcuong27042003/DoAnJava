@@ -141,25 +141,25 @@
         </div>
     </div>
     <!--Car container-->
-    <div class="w-full mx-auto bg-gray-100">
+    <div class="ju w-full mx-auto bg-gray-100">
         <h1 class="pt-10 mb-12 font-medium text-center text-5xl/snug">Xe Dành Cho Bạn</h1>
         <div class="w-4/5 mx-auto">
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                <div th:each="xe : ${xeList}" class="p-4 bg-white rounded-lg shadow-md">
+                <a th:each="xe : ${xeList}" th:href="@{/xeinfor/{id}(id=${xe.getBienSoXe()})}" class="p-4 bg-white rounded-lg shadow-md">
                     <!--Image-->
-                    <img class="w-full h-48 mb-3 rounded-md" th:src="@{${xe.hinhAnh1}}" alt="Xe hình ảnh">
+                    <img class="w-full h-48 mb-3 rounded-md" th:src="@{/images/{imageName}(imageName=${xe.hinhAnh1})}" alt="Xe hình ảnh">
                     <!--Card-->
                     <div class="pt-4">
                         <div class="flex items-center mb-2">
                     <span class="px-2 py-1 text-xs text-gray-700 bg-gray-200 rounded">
-                        <span th:text="${xe.tenXe}">Số tự động</span>
+                        <span th:text="${xe.loaiXe.getTenLoai()}"></span>
                     </span>
                             <span class="px-2 py-1 mx-2 text-xs text-green-700 bg-green-200 rounded">
                         Giao xe tận nơi
                     </span>
                         </div>
-                        <h3 class="mt-4 text-lg font-semibold text-gray-800" th:text="${xe.tenXe}">FORD ECOSPORT 2017</h3>
-                        <p class="mt-1 text-sm text-gray-500" th:text="${xe.diaDiem.tenDiaDiem}">Quận 3, TP. Hồ Chí Minh</p>
+                        <h3 class="mt-4 text-lg font-semibold text-gray-800" th:text="${xe.tenXe}"></h3>
+                        <p class="mt-1 text-sm text-gray-500" th:text="${xe.diaDiem.tenDiaDiem}"></p>
                         <!--Horizontal line-->
                         <div class="w-full h-px mx-auto my-3 bg-gray-200"></div>
                         <div class="flex items-center justify-between mt-2">
@@ -179,10 +179,10 @@
                                 </svg>
                                 <span class="text-sm text-gray-700">27 chuyến</span>
                             </div>
-                            <span class="text-sm font-bold text-green-600" th:text="${#numbers.formatDecimal(xe.giaThue, 0, 'K', 'VNĐ')}">804K / ngày</span>
+                            <span class="text-sm font-bold text-green-600" th:text="${xe.getGiaThue()}+ 'đ / ngày'">804K / ngày</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
