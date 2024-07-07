@@ -10,14 +10,13 @@ import org.example.dajava.Service.XeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -59,4 +58,18 @@ public class IndexController {
         taikhoanService.setDefaultChucVu(taikhoan.getEmail());
         return "redirect:/";
     }
+
+
+    @GetMapping("/forgot-password")
+    public String showForgotPasswordForm() {
+        return "/Home/ForgotPassword";
+    }
+
+    @PostMapping("/forgot-password")
+    public String processForgotPassword(@RequestParam("email") String email) {
+        taikhoanService.sendPasswordReset(email);
+        return "redirect:/login?forgotPasswordSuccess";
+    }
+
+
 }

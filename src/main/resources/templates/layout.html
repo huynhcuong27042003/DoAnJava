@@ -130,7 +130,7 @@
                 <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none" id="password" type="password" name="MatKhau" placeholder="Mật khẩu">
             </div>
             <button class="w-full px-4 py-2 font-bold text-white bg-green-300 rounded-lg hover:bg-green-400" type="submit">Đăng nhập</button>
-            <button class="py-4 underline float-start underline-offset-4 hover:text-blue-600">Quên mật khẩu?</button>
+            <button class="py-4 underline float-start underline-offset-4 hover:text-blue-600" th:href="@{/forgot-password}">Quên mật khẩu?</button>
             <button class="py-4 underline float-end underline-offset-4 hover:text-blue-600" id="haveNotAccount" onclick="changeModal(event)">Bạn chưa có tài khoản?</button>
             <div class="flex w-full mt-2">
                 <button class="flex items-center justify-center w-full py-2 mr-1 text-white bg-red-500 rounded-lg hover:bg-red-600">
@@ -199,6 +199,8 @@
                     </p>
                     <div class="item__sub">
                         <a href="">Đăng ký làm chủ xe</a>
+                        <a href="/forgot-password">Quên mật khẩu?</a>
+
                     </div>
                 </div>
             </div>

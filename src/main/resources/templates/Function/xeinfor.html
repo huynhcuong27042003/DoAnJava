@@ -305,4 +305,30 @@
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/isSameOrAfter.js"></script>
 <!--Self-written JS-->
 <script src="js/index/calendar.js"></script>
+<script th:inline="javascript">
+    $(document).ready(function() {
+        $('.send-email-btn').click(function() {
+            // Gọi API để gửi email
+            $.ajax({
+                type: 'POST',
+                url: '/api/send-email',
+                data: {
+                    recipient: 'nguyenlequan11042k3@gmail.com', // Thay email người dùng tại đây
+                    subject: 'Xác nhận thuê xe',
+                    body: 'Nội dung email xác nhận thuê xe...'
+                },
+                success: function(response) {
+                    // Xử lý khi gửi email thành công
+                    alert('Email đã được gửi thành công!');
+                },
+                error: function(xhr, status, error) {
+                    // Xử lý khi gửi email không thành công
+                    alert('Đã xảy ra lỗi trong quá trình gửi email.');
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
 </html>

@@ -44,6 +44,7 @@ public class XeController {
         return "xe/list"; // Return the view for displaying all hidden Xe
     }
 
+
     @GetMapping("/add")
     public String addXeForm(Model model) {
         model.addAttribute("xe", new Xe());

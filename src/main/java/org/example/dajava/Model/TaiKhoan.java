@@ -123,5 +123,8 @@ public class TaiKhoan implements UserDetails{
     public int hashCode() {
         return getClass().hashCode();
     }
+
+    private String resetToken; // Field to store the reset token
+
     // Getters and Setters
 }

@@ -2,6 +2,7 @@ package org.example.dajava.Controller.FunctionController;
 
 import lombok.RequiredArgsConstructor;
 import org.example.dajava.Model.Xe;
+import org.example.dajava.Service.MailService;
 import org.example.dajava.Service.XeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +17,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MotorInforController {
     @Autowired
     private final XeService xeService;
+    private final MailService mailService; // Inject MailService
+
+//    @GetMapping("/{id}")
+//    public String Xeinfor(@PathVariable("id") String id, Model model){
+//        Xe xe = xeService.findXeByBienSoXe(id);
+//        model.addAttribute("xe", xe);
+//        return "Function/xeinfor";
+//    }
+
     @GetMapping("/{id}")
     public String Xeinfor(@PathVariable("id") String id, Model model){
         Xe xe = xeService.findXeByBienSoXe(id);
         model.addAttribute("xe", xe);
+
+        // Gửi email xác nhận thuê xe
+        String recipientEmail = "nguyenlequan11042k3@gmail.com"; // Thay email người dùng tại đây
+        String subject = "Xác nhận thuê xe";
+        String body = "Xin chào,\n\nBạn đã chọn thuê xe thành công.\n\nThông tin chi tiết:\nBiển số xe: " + xe.getBienSoXe();
+
+        mailService.SendMail(recipientEmail, subject, body);
+
         return "Function/xeinfor";
     }
+
 }
